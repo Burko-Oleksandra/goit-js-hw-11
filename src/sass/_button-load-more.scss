@@ -1,0 +1,25 @@
+body {
+  background-color: #d3d3d3;
+}
+
+.load-more-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.load-more {
+  background-color: #daa520;
+  border: 2px solid inherit;
+  color: white;
+  border-radius: 8px;
+  width: 170px;
+  height: 40px;
+}
+
+.load-more:hover,
+.load-more:focus {
+  outline-color: rgba(24, 140, 232, 1);
+  border-color: rgba(24, 140, 232, 1);
+  color: rgba(24, 140, 232, 1);
+}

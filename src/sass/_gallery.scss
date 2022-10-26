@@ -1,0 +1,28 @@
+.gallery {
+  display: flex;
+  margin: auto auto;
+  flex-wrap: wrap;
+  gap: 40px;
+  width: 1410px;
+}
+
+.photo-card {
+  width: 250px;
+  //   height: 166px;
+  background-size: cover;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.info {
+  display: flex;
+  padding: 10px 10px;
+  background-color: white;
+}
+
+p {
+  display: flex;
+  font-size: 16px;
+  display: flex;
+  gap: 10px;
+}
