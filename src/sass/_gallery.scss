@@ -8,21 +8,32 @@
 
 .photo-card {
   width: 250px;
-  //   height: 166px;
   background-size: cover;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .info {
   display: flex;
+  gap: 10px;
   padding: 10px 10px;
-  background-color: white;
+  background-color: #ece6cd;
+  border: 1px solid #3a3f58;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
 }
 
 p {
+  margin: auto auto;
+  text-align: center;
+  font-size: 12px;
+  gap: 5px;
+}
+
+ion-icon {
   display: flex;
-  font-size: 16px;
-  display: flex;
-  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: auto auto;
+}
+
+p span {
+  font-size: 8px;
 }

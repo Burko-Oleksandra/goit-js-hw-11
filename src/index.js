@@ -11,19 +11,6 @@ import markUp from './markUp';
 // comments - кількість коментарів.
 // downloads - кількість завантажень.
 
-// Notiflix.Notify.info(
-//   "We're sorry, but you've reached the end of search results",
-//   {
-//     timeout: 3000,
-//     cssAnimationStyle: 'zoom',
-//     info: {
-//       background: 'rgba(175, 177, 184, 1)',
-//       textColor: 'rgba(24, 140, 232, 1)',
-//       notiflixIconColor: 'rgba(24, 140, 232, 1)',
-//     },
-//   }
-// );
-
 const formEl = document.querySelector('.search-form');
 const inputEl = document.querySelector('input[name="searchQuery"]');
 const searchEl = document.querySelector('.search-btn');
@@ -36,8 +23,10 @@ let currentHits = 0;
 formEl.addEventListener('submit', onSearch);
 loadMoreEl.addEventListener('click', loadMore);
 
-function onSearch(e) {
+async function onSearch(e) {
   e.preventDefault();
+  waitForLoading();
+  loadMoreEl.classList.add('visually-hidden');
   galleryEl.innerHTML = '';
   imageApi.query = e.currentTarget.elements.searchQuery.value.trim();
   currentHits = 0;
@@ -50,9 +39,9 @@ function onSearch(e) {
         timeout: 3000,
         cssAnimationStyle: 'zoom',
         info: {
-          background: 'rgba(175, 177, 184, 1)',
-          textColor: 'rgba(24, 140, 232, 1)',
-          notiflixIconColor: 'rgba(24, 140, 232, 1)',
+          background: 'rgba(249, 172, 103, 1)',
+          textColor: 'rgba(58, 63, 88, 1)',
+          notiflixIconColor: 'rgba(58, 63, 88, 1)',
         },
       }
     );
@@ -60,29 +49,36 @@ function onSearch(e) {
   }
 
   imageApi.resetPage();
-  imageApi.fetchImage().then(hits => {
+  await imageApi.fetchImage().then(hits => {
     currentHits += hits.length;
-    console.log(currentHits);
     drawMarkup(hits);
   });
   loadMoreEl.classList.remove('visually-hidden');
+  Notiflix.Loading.remove();
 }
 
-function loadMore() {
-  imageApi.fetchImage().then(hits => {
+async function loadMore() {
+  waitForLoading();
+  await imageApi.fetchImage().then(hits => {
     currentHits += hits.length;
-    console.log(currentHits);
-    console.log(hits.totalHits);
     drawMarkupMore(hits);
+    if (currentHits >= imageApi.totalHits) {
+      Notiflix.Notify.info(
+        "We're sorry, but you've reached the end of search results",
+        {
+          timeout: 3000,
+          cssAnimationStyle: 'zoom',
+          info: {
+            background: 'rgba(249, 172, 103, 1)',
+            textColor: 'rgba(58, 63, 88, 1)',
+            notiflixIconColor: 'rgba(58, 63, 88, 1)',
+          },
+        }
+      );
+      loadMoreEl.classList.add('visually-hidden');
+    }
   });
-  // Notiflix.Loading.dots('Loading...', {
-  //   clickToClose: true,
-  //   backgroundColor: 'rgba(0,0,0,0.3)',
-  //   svgColor: '#188ce8',
-  //   svgSize: '50px',
-  //   messageFontSize: '18px',
-  //   messageColor: '#188ce8',
-  // });
+  Notiflix.Loading.remove();
 }
 
 function drawMarkup(arrayImages) {
@@ -91,4 +87,13 @@ function drawMarkup(arrayImages) {
 
 function drawMarkupMore(arrayImages) {
   galleryEl.insertAdjacentHTML('beforeend', markUp(arrayImages));
+}
+
+function waitForLoading() {
+  Notiflix.Loading.dots({
+    backgroundColor: 'rgba(0,0,0,0.3)',
+    svgColor: '#ee6a59',
+    svgSize: '50px',
+    messageFontSize: '18px',
+  });
 }

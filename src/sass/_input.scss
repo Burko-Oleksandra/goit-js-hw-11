@@ -8,7 +8,9 @@
 .search-form input {
   margin-right: 10px;
   padding: 4px 4px;
-  border: 2px solid rgba(175, 177, 184, 1);
+  border: 2px solid #3a3f58;
+  background-color: #f9ac67;
+  color: #3a3f58;
   border-radius: 8px;
   font-size: 18px;
   width: 400px;
@@ -18,11 +20,12 @@
 .search-form input::placeholder {
   padding: 4px 4px;
   font-size: 14px;
-  color: rgba(175, 177, 184, 1);
+  color: #3a3f58;
 }
 
 .search-form input:focus,
 .search-form input:hover {
-  outline-color: rgba(24, 140, 232, 1);
-  border-color: rgba(24, 140, 232, 1);
+  outline: none;
+  border: 2px solid #3a3f58;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }

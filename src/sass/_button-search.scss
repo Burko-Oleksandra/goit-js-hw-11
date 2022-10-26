@@ -1,15 +1,16 @@
 .search-btn {
-  background-color: white;
-  border: 2px solid rgba(175, 177, 184, 1);
+  background-color: #f9ac67;
+  border: 2px solid #3a3f58;
   border-radius: 8px;
-  color: rgba(175, 177, 184, 1);
+  color: #3a3f58;
   width: 120px;
   height: 40px;
 }
 
 .search-btn:hover,
 .search-btn:focus {
-  outline-color: rgba(24, 140, 232, 1);
-  border-color: rgba(24, 140, 232, 1);
-  color: rgba(24, 140, 232, 1);
+  background-color: #ee6a59;
+  outline: none;
+  border: 2px solid #3a3f58;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
