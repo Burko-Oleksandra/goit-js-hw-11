@@ -13,7 +13,7 @@ export default class ImageApi {
   async fetchImage() {
     return await axios
       .get(
-        `${URL}?key=${MY_KEY}&safesearch=true&q=${this.searchQuery}&image_type=photo&orientation=horizontal&per_page=200&page=${this.page}`
+        `${URL}?key=${MY_KEY}&safesearch=true&q=${this.searchQuery}&image_type=photo&orientation=horizontal&per_page=40&page=${this.page}`
       )
       .then(data => {
         this.page += 1;
